@@ -225,8 +225,9 @@ function AposBot() {
     this.compareThreatSize = function(player1, player2, ratio) {
         var player1Size = player1.size * player1.size * ratio;
         var player2Size = player2.size * player2.size;
+        var sizeRatio = player2Size / player1Size;
 
-        if (player1Size < player2Size && player2Size / player1Size < 4) {
+        if (player1Size < player2Size || (sizeRatio > 1 && sizeRatio < 4) ) {
             return true;
         }
         return false;
