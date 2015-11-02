@@ -226,7 +226,7 @@ function AposBot() {
         var player1Size = player1.size * player1.size * ratio;
         var player2Size = player2.size * player2.size;
 
-        if (player1Size < player2Size && player2Size / player1Size < 3) {
+        if (player1Size < player2Size && player2Size / player1Size < 4) {
             return true;
         }
         return false;
