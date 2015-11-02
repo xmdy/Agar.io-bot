@@ -294,7 +294,7 @@ function AposBot() {
     };
 
     this.isThreat = function(blob, cell) {
-        if (!cell.isVirus() && this.compareThreatSize(blob, cell, 1.30) && this.isDangerThreatDistance(blob, cell)) {
+        if (!cell.isVirus() && (this.compareThreatSize(blob, cell, 1.30) || this.isDangerThreatDistance(blob, cell))) {
             return true;
         }
         return false;
