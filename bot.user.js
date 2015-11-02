@@ -233,6 +233,12 @@ function AposBot() {
         return false;
     };
 
+    this.threatSizeRatio = function(player1, player2, ratio) {
+        var player1Size = player1.size * player1.size * ratio;
+        var player2Size = player2.size * player2.size;
+        return player2Size / player1Size;
+    };
+
     this.isDangerThreatDistance = function(player1, player2){
         var d = this.computeDistance(player1.x, player1.y, player2.x, player2.y, player1.size, player2.size);
         if('show_log' in window && window.show_log){
@@ -295,8 +301,19 @@ function AposBot() {
     };
 
     this.isThreat = function(blob, cell) {
-        if (!cell.isVirus() && (this.compareThreatSize(blob, cell, 1.30) || this.isDangerThreatDistance(blob, cell))) {
-            return true;
+        if(!cell.isVirus()){
+            var sizeRatio = this.threatSizeRatio(blob, cell, 1.30);
+            if(sizeRatio < 1){
+                return false;
+            }
+            if(sizeRatio > 4){
+                if(this.isDangerThreatDistance(blob, cell)){
+                    return true;
+                }
+                return false;
+            }else{
+                return true;
+            }
         }
         return false;
     };
