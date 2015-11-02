@@ -222,6 +222,16 @@ function AposBot() {
         return false;
     },
 
+    this.compareThreatSize = function(player1, player2, ratio) {
+        var player1Size = player1.size * player1.size * ratio;
+        var player2Size = player2.size * player2.size;
+
+        if (player1Size < player2Size && player2Size / player1Size < 3) {
+            return true;
+        }
+        return false;
+    }
+
     this.canSplit = function(player1, player2) {
         return this.compareSize(player1, player2, 2.8) && !this.compareSize(player1, player2, 20);
     };
@@ -277,7 +287,7 @@ function AposBot() {
 
     this.isThreat = function(blob, cell) {
         
-        if (!cell.isVirus() && this.compareSize(blob, cell, 1.30)) {
+        if (!cell.isVirus() && this.compareThreatSize(blob, cell, 1.30)) {
             return true;
         }
         return false;
