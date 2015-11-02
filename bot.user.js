@@ -234,8 +234,10 @@ function AposBot() {
 
     this.isDangerThreatDistance = function(player1, player2){
         var d = this.computeDistance(player1.x, player1.y, player2.x, player2.y, player1.size, player2.size);
-        console.log(d, player1.name, player2.name);
-        return true;
+        if('show_log' in window && window.show_log){
+            console.log(d, player1.name, player2.name, player1.size, player2.size);
+        }
+        return d < player1.size;
     };
 
     this.canSplit = function(player1, player2) {
@@ -292,7 +294,6 @@ function AposBot() {
     };
 
     this.isThreat = function(blob, cell) {
-        
         if (!cell.isVirus() && this.compareThreatSize(blob, cell, 1.30) && this.isDangerThreatDistance(blob, cell)) {
             return true;
         }
