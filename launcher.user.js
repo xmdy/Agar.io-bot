@@ -499,7 +499,7 @@ console.log("Running Bot Launcher!");
                 ba = (sa + qa) / 2;
                 ca = 1;
                 0 == k.length && (s = aa, t = ba, h = ca);
-                a.byteLength > c && (a.getUint32(c, !0), c += 4, Va = b(), true, console.log("Server version " + Va));
+                a.byteLength > c && (a.getUint32(c, !0), c += 4, vvva = b(), true, console.log("Server version " + vvva));
                 break;
             case 81:
                 var g = a.getUint32(c, !0),
