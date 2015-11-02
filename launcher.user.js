@@ -1357,7 +1357,7 @@ console.log("Running Bot Launcher!");
                 dArc = [],
                 dText = [],
                 lines = [],
-                names = ["NotReallyABot"],
+                names = ["1", "2", "3", "4"],
                 firstStart = true;
                 originalName = names[Math.floor(Math.random() * names.length)],
                 sessionScore = 0,
